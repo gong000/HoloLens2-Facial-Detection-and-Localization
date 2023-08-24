@@ -1,3 +1,7 @@
+#new0825
+20.3.21f1
+
+Original
 # HoloLens2 Facial Detection and Localization
  Project to port existing MS Holographic Face Detection Sample to Unity and C#
 
