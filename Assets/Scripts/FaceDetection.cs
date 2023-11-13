@@ -122,6 +122,8 @@ public class FaceDetection : MonoBehaviour
             await _mediaCaptureUtility.StopMediaFrameReaderAsync();
         }
     }
+    
+    public GameObject newParent;
 
     async void Update()
     {
@@ -173,7 +175,8 @@ public class FaceDetection : MonoBehaviour
     #endregion
 
 
-
+    private int num = 0;
+    
 #if ENABLE_WINMD_SUPPORT
 
    private void RGBDetectionToWorldspace(DetectedFaces result, Frame returnFrame)
@@ -181,7 +184,8 @@ public class FaceDetection : MonoBehaviour
 
         //Debug.Log("Number of faces: " + result.Faces.Count());
         //create a trasnform from camera space to world space
-        var cameraToWorld = (System.Numerics.Matrix4x4)returnFrame.spatialCoordinateSystem.TryGetTransformTo(worldSpatialCoordinateSystem);
+        var cameraToWorld =
+ (System.Numerics.Matrix4x4)returnFrame.spatialCoordinateSystem.TryGetTransformTo(worldSpatialCoordinateSystem);
         UnityEngine.Matrix4x4 unityCameraToWorld = NumericsConversionExtensions.ToUnity(cameraToWorld);
         var pixelsPerMeterAlongX = returnFrame.cameraIntrinsics.FocalLength.X;
         var averagePixelsForFaceAt1Meter = pixelsPerMeterAlongX * averageFaceWidthInMeters;
@@ -192,15 +196,19 @@ public class FaceDetection : MonoBehaviour
             double yCoord = (double)face.Y + ((double)face.Height / 2.0F);
             
             //vetor toward face at 1m
-            System.Numerics.Vector2 projectedVector = returnFrame.cameraIntrinsics.UnprojectAtUnitDepth(new Point(xCoord, yCoord));
-            UnityEngine.Vector3 normalizedVector = NumericsConversionExtensions.ToUnity(new System.Numerics.Vector3(projectedVector.X, projectedVector.Y, -1.0f));
+            System.Numerics.Vector2 projectedVector =
+ returnFrame.cameraIntrinsics.UnprojectAtUnitDepth(new Point(xCoord, yCoord));
+            UnityEngine.Vector3 normalizedVector =
+ NumericsConversionExtensions.ToUnity(new System.Numerics.Vector3(projectedVector.X, projectedVector.Y, -1.0f));
             normalizedVector.Normalize();
             //calculate estimated depth based on average face width and pixel width in detection
             float estimatedFaceDepth = averagePixelsForFaceAt1Meter / (float)face.Width;
             Vector3 targetPositionInCameraSpace = normalizedVector * estimatedFaceDepth;
             Vector3 bestRectPositionInWorldspace = unityCameraToWorld.MultiplyPoint(targetPositionInCameraSpace);
             //create object at established 3D coords
-            var newObject = Instantiate(objectOutlineCube, bestRectPositionInWorldspace, Quaternion.identity);
+            var newObject = (GameObject) Instantiate(objectOutlineCube, bestRectPositionInWorldspace, Quaternion.identity, newParent.transform);
+            newObject.name = "FaceBox" + num.ToString();
+            num++;
         }
  
     }

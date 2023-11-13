@@ -96,6 +96,12 @@ MonoBehaviour:
     priority: 0
     runtimePlatform: -1
     deviceManagerProfile: {fileID: 11400000, guid: 37744e92b9746b745aa70a3b77596147, type: 2}
+  - componentType:
+      reference: 
+    componentName: New data provider 12
+    priority: 0
+    runtimePlatform: -1
+    deviceManagerProfile: {fileID: 0}
   focusProviderType:
     reference: Microsoft.MixedReality.Toolkit.Input.FocusProvider, Microsoft.MixedReality.Toolkit.Services.InputSystem
   raycastProviderType:
@@ -105,10 +111,10 @@ MonoBehaviour:
   focusIndividualCompoundCollider: 0
   inputActionsProfile: {fileID: 11400000, guid: 4e612b3b9b7239648a53f22f541356c5, type: 2}
   inputActionRulesProfile: {fileID: 11400000, guid: 5b00f7c6af2b7d448a382f2e7d9437f1, type: 2}
-  pointerProfile: {fileID: 11400000, guid: fa348bf44b661704fb20e5d975528e84, type: 2}
+  pointerProfile: {fileID: 11400000, guid: 77c023796dc55fd4d9859fc8573430c4, type: 2}
   gesturesProfile: {fileID: 11400000, guid: bd7829a9b29409045a745b5a18299291, type: 2}
   speechCommandsProfile: {fileID: 11400000, guid: 0c8a5b59737fff34c9f5e511149e29fb, type: 2}
   enableControllerMapping: 1
-  controllerMappingProfile: {fileID: 11400000, guid: 39ded1fd0711a0c448413d0e1ec4f7f3, type: 2}
+  controllerMappingProfile: {fileID: 11400000, guid: 9052518287f14a949a04f4a00ff4b2b9, type: 2}
   controllerVisualizationProfile: {fileID: 11400000, guid: 345c06fdf3732db46b96299bd3cba653, type: 2}
   handTrackingProfile: {fileID: 11400000, guid: 7f1e3cd673742f94ca860ac7ae733024, type: 2}

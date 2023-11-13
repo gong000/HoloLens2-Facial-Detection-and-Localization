@@ -9,7 +9,7 @@ public class BoundingBoxScript : MonoBehaviour
     int counter;
     private float initializationTime;
     //set time to live for 3D bounding box
-    int TTL = 20;
+    int TTL=500;
 
 
     void Start()
